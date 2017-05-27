@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+      // best way to judge a object exist or not
+      // typeof 的返回是一个字符串
+      // You cannot use typeof to determine if a JavaScript object is an array (or a date).
+      if (typeof xiaoming == 'undefined') {
+          alert("xiaoming undefined");
+      }
+      // best way to judge a exit object is 'null';
+      var xiaoming = null;
+      if(!xiaoming) {
+            alert("xiaoming is null");
+      }
+
+      // alert: 'undefined' == null while 'undefined' 并不会 === null
+      if (undefined == null) {
+          alert("undefined == null")
+      }
+      var flag = undefined === null;
+      if (!flag) {
+          alert("undefined === null is false")
+      }
+      var cars = ["Saab", "Volvo", "BMW"];
+      alert(typeof cars);
+      var d1 = new Date();
+      alert(typeof d1);
+    </script>    
+</body>
+</html>
