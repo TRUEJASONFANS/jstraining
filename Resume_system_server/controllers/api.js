@@ -1,30 +1,39 @@
-const products = require('../products');
+const candidates = require('../candidate');
 const path = require('path')
 const APIError = require('../rest').APIError;
-const {uploadFile} = require('../util/upload')
+const { uploadFile } = require('../util/upload')
 
 module.exports = {
-    'GET /api/products': async(ctx, next) => {
+    'GET /api/candidates': async (ctx, next) => {
         ctx.rest({
-            products: products.getProducts()
+            candidates: candidates.getCandidates()
         });
     },
 
-    'POST /api/products': async(ctx, next) => {
-        var p = products.createProduct(ctx.request.body.name, ctx.request.body.manufacturer, parseFloat(ctx.request.body.price));
+    'GET /api/candidates/:id': async (ctx, next) => {
+        var c = candidates.getCandidate(ctx.params.id);
+        if (c) {
+            ctx.rest(c);
+        } else {
+            throw new APIError('candidate:not_found', 'candidate not found by id.');
+        }
+    },
+
+    'POST /api/candidates': async (ctx, next) => {
+        var c = candidates.createCandidate(ctx.request.body.name, ctx.request.body.email, parseFloat(ctx.request.body.phoneNumber));
         ctx.rest(p);
     },
 
-    'DELETE /api/products/:id': async(ctx, next) => {
-        console.log(`delete product ${ctx.params.id}...`);
-        var p = products.deleteProduct(ctx.params.id);
-        if (p) {
-            ctx.rest(p);
+    'DELETE /api/candidates/:id': async (ctx, next) => {
+        console.log(`delete Candidate ${ctx.params.id}...`);
+        var c = candidates.deleteCandidate(ctx.params.id);
+        if (c) {
+            ctx.rest(c);
         } else {
-            throw new APIError('product:not_found', 'product not found by id.');
+            throw new APIError('candidate:not_found', 'candidate not found by id.');
         }
     },
-    'POST /api/upload': async(ctx, next) => {
+    'POST /api/upload': async (ctx, next) => {
         console.log('upload a file by post method');
         let result = {
             success: false
