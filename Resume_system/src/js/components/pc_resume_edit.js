@@ -21,7 +21,6 @@ class EditableCell extends React.Component {
 	edit = () => {
 		this.setState({ editable: true });
 	}
-
 	render() {
 		const { value, editable, label } = this.state;
 		return (
@@ -31,7 +30,7 @@ class EditableCell extends React.Component {
 						<div className="editable-cell-input-wrapper">
 							{label}:
 							<Input
-								value={value}
+								value={this.props.value}
 								onChange={this.handleChange}
 								onPressEnter={this.check}
 							/>
@@ -44,7 +43,7 @@ class EditableCell extends React.Component {
 						:
 						<div className="editable-cell-text-wrapper">
 							{label}:
-							{value || ' '}
+							{this.props.value || ' '}
 							<Icon
 								type="edit"
 								className="editable-cell-icon"
@@ -62,7 +61,8 @@ export default class PCResumeEdit extends React.Component {
 		editable: this.props.editable || false,
 		previewVisible: false,
 		previewImage: '',
-		fileList: []
+		fileList: [],
+		data: {}
 	}
 	handlePreview = (file) => {
 		this.setState({
@@ -71,6 +71,21 @@ export default class PCResumeEdit extends React.Component {
 		});
 	}
 	handleChange = ({ fileList }) => this.setState({ fileList })
+	componentDidMount() {
+		var myFetchOptions = {
+			method: 'GET'
+		};
+		console.log("http://localhost:3000/api/candidates/" + this.props.params.id);
+		fetch("http://localhost:3000/api/candidates/" + this.props.params.id, myFetchOptions)
+			.then(response => response.json())
+			.then(json => {
+				console.log(json);
+				this.setState({
+					data: json
+				});
+			}
+			);
+	}
 	render() {
 		const resume_upload_props = {
 			listType: 'picture-card',
@@ -83,32 +98,33 @@ export default class PCResumeEdit extends React.Component {
 				<div className="ant-upload-text">Upload</div>
 			</div>
 		);
-		const { previewVisible, previewImage, fileList } = this.state;
+		const { previewVisible, previewImage, fileList, data } = this.state;
 		return (
 			<div>
 				<PCHeader></PCHeader>
 				<BackTop />
-				<Row>
+				<Row gutter={8}>
 					<Col span={6} />
 					<Col span={4}>
-						<EditableCell value='' label='姓名' />
-						<EditableCell value='' label='学历' />
-						<EditableCell value='' label='毕业学校' />
-						<EditableCell value='' label='电话' />
-						<EditableCell value='' label='邮箱' />
-						<EditableCell value='' label='简历' />
-						<div className="clearfix">
-							<Upload {...resume_upload_props}>
-								{fileList.length >= 1 ? null : resume_upload_button}
-							</Upload>
-							<Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
-								<img alt="example" style={{ width: '100%' }} src={previewImage} />
-							</Modal>
-						</div>
+						<EditableCell value={data.name} label= '姓名' />
+							<EditableCell value='' label='学历' />
+							<EditableCell value='' label='毕业学校' />
+							<EditableCell value={data.phone} label='电话' />
+							<EditableCell value={data.email} label='邮箱' />
+							<EditableCell value='' label='简历' />
+							<div className="clearfix">
+								<Upload {...resume_upload_props}>
+									{fileList.length >= 1 ? null : resume_upload_button}
+								</Upload>
+								<Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
+									<img alt="example" style={{ width: '100%' }} src={previewImage} />
+								</Modal>
+							</div>
+							<Input type="textarea" rows={4} />
 					</Col>
 				</Row>
-				<PCFooter></PCFooter>
+					<PCFooter></PCFooter>
 			</div>
-		);
+				);
 	};
 }

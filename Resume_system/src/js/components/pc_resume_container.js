@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table, Icon, Row, Col, BackTop } from 'antd';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
 const columns = [{
     title: 'Name',
     dataIndex: 'name',
@@ -24,7 +24,7 @@ const columns = [{
 }, {
     title: 'Phone Number',
     dataIndex: 'phone',
-}, { title: 'Action', key: 'operation', render: (id) => <Link to ={`/viewResume/${id}`}> View</Link> }
+}, { title: 'Action', key: 'operation', dataIndex: 'id', render: (id) => <Link to={`/viewResume/${id}`}> View</Link> }
 ];
 
 export default class PCResumeContainer extends React.Component {
@@ -57,7 +57,7 @@ export default class PCResumeContainer extends React.Component {
                 this.setState({
                     loading: false,
                     data: json,
-                    isLoaded : true
+                    isLoaded: true
                 });
             }
             );
