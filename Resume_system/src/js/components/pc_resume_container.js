@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Icon, Row, Col, BackTop } from 'antd';
+import {Link} from 'react-router';
 const columns = [{
     title: 'Name',
     dataIndex: 'name',
@@ -23,7 +24,7 @@ const columns = [{
 }, {
     title: 'Phone Number',
     dataIndex: 'phone',
-}, { title: 'Action', key: 'operation', render: () => <a href="#">View</a> }
+}, { title: 'Action', key: 'operation', render: (id) => <Link to ={`/viewResume/${id}`}> View</Link> }
 ];
 
 export default class PCResumeContainer extends React.Component {
@@ -33,6 +34,7 @@ export default class PCResumeContainer extends React.Component {
             data: [],
             pagination: {},
             loading: false,
+            isLoaded: false
         }
     };
     componentDidMount() {
@@ -46,12 +48,16 @@ export default class PCResumeContainer extends React.Component {
         var myFetchOptions = {
             method: 'get'
         };
+        if (this.state.isLoaded) {
+            reuturn;
+        }
         fetch("http://localhost:3000/api/candidates", myFetchOptions)
             .then(response => response.json())
             .then(json => json.candidates).then(json => {
                 this.setState({
                     loading: false,
-                    data: json
+                    data: json,
+                    isLoaded : true
                 });
             }
             );

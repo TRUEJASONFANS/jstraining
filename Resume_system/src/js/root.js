@@ -1,23 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, hashHistory, Redirect, IndexRoute } from 'react-router';
 import { Button } from 'antd';
 import PCIndex from './components/pc_index';
-import MobileIndex from './components/mobile_index';
 import 'antd/dist/antd.css';
-import MediaQuery from 'react-responsive';
+import PCResumeAdd from './components/pc_resume_add';
+import PCResumeEdit from './components/pc_resume_edit';
+import App from './components/App';
 export default class Root extends React.Component {
 	render() {
 		return (
 			<div>
-				<MediaQuery query='(min-device-width: 1224px)'>
-					<Router history = {hashHistory}>
-						<Route path ="/" component={PCIndex}/>
-					</Router>
-				</MediaQuery>
-				<MediaQuery query='(max-device-width: 1224px)'>
-					<MobileIndex />
-				</MediaQuery>
+				<Router history={hashHistory}>
+					<Route path="/" component={App} >
+						<IndexRoute component={PCIndex} />
+						<Route path="/addResume" component={PCResumeAdd} />
+						<Route path="/viewResume/:id" component={PCResumeEdit} />
+					</Route>
+				</Router>
 			</div>
 		);
 	};
