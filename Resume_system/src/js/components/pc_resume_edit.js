@@ -21,6 +21,13 @@ class EditableCell extends React.Component {
 	edit = () => {
 		this.setState({ editable: true });
 	}
+	componentWillReceiveProps = function(nextProps) {
+        if (nextProps.value) {
+            this.setState({
+				value:nextProps.value
+            });
+        }
+    }
 	render() {
 		const { value, editable, label } = this.state;
 		return (
@@ -28,22 +35,23 @@ class EditableCell extends React.Component {
 				{
 					editable ?
 						<div className="editable-cell-input-wrapper">
-							{label}:
 							<Input
-								value={this.props.value}
+								value={this.state.value}
 								onChange={this.handleChange}
 								onPressEnter={this.check}
+								addonBefore={label}
 							/>
 							<Icon
 								type="check"
 								className="editable-cell-icon-check"
 								onClick={this.check}
 							/>
+
 						</div>
 						:
 						<div className="editable-cell-text-wrapper">
-							{label}:
-							{this.props.value || ' '}
+							<span class='editable-cell-text'>{label} :</span>
+							{this.state.value || ' '}
 							<Icon
 								type="edit"
 								className="editable-cell-icon"
@@ -106,25 +114,26 @@ export default class PCResumeEdit extends React.Component {
 				<Row gutter={8}>
 					<Col span={6} />
 					<Col span={4}>
-						<EditableCell value={data.name} label= '姓名' />
-							<EditableCell value='' label='学历' />
-							<EditableCell value='' label='毕业学校' />
-							<EditableCell value={data.phone} label='电话' />
-							<EditableCell value={data.email} label='邮箱' />
-							<EditableCell value='' label='简历' />
-							<div className="clearfix">
-								<Upload {...resume_upload_props}>
-									{fileList.length >= 1 ? null : resume_upload_button}
-								</Upload>
-								<Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
-									<img alt="example" style={{ width: '100%' }} src={previewImage} />
-								</Modal>
-							</div>
-							<Input type="textarea" rows={4} />
+						<EditableCell value={data.name} label='姓名' />
+						<EditableCell value='' label='学历' />
+						<EditableCell value='' label='毕业学校' />
+						<EditableCell value={data.phone} label='电话' />
+						<EditableCell value={data.email} label='邮箱' />
+						<EditableCell value='' label='简历' />
+						<div className="clearfix">
+							<Upload {...resume_upload_props}>
+								{fileList.length >= 1 ? null : resume_upload_button}
+							</Upload>
+							<Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
+								<img alt="example" style={{ width: '100%' }} src={previewImage} />
+							</Modal>
+						</div>
+						评价
+						<Input type="textarea" rows={4}/>
 					</Col>
 				</Row>
-					<PCFooter></PCFooter>
+				<PCFooter></PCFooter>
 			</div>
-				);
+		);
 	};
 }
