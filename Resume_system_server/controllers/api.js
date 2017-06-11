@@ -19,6 +19,21 @@ module.exports = {
         }
     },
 
+    'POST /api/addCandidate': async (ctx, next) => {
+        console.log('upload a file by post method');
+        let result = {
+            success: false
+        }
+        let serverFilePath = path.join(__dirname, '../upload-files')
+        // 上传文件事件
+        console.log(`file path: ${serverFilePath}`);
+        result = await uploadFile(ctx, {
+            fileType: 'pdf',
+            path: serverFilePath
+        })
+        ctx.body = result
+    },
+
     'POST /api/candidates': async (ctx, next) => {
         var c = candidates.createCandidate(ctx.request.body.name, ctx.request.body.email, parseFloat(ctx.request.body.phoneNumber));
         ctx.rest(p);
