@@ -17,6 +17,7 @@ const TabPane = Tabs.TabPane;
 const MenuItemGroup = Menu.ItemGroup;
 import { Router, Route, Link, browserHistory } from 'react-router';
 import Uploader from './uploader';
+import Logo  from '../../images/logo.png';
 class PCHeader extends React.Component {
 	constructor() {
 		super();
@@ -108,7 +109,7 @@ class PCHeader extends React.Component {
 					<Col span={2}></Col>
 					<Col span={4}>
 						<a href="/" class="logo">
-							<img src="./src/images/logo.png" alt="logo" />
+							<img src={Logo} alt="logo" />
 							<span>Resume System</span>
 						</a>
 					</Col>

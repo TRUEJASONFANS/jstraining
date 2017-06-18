@@ -1,10 +1,9 @@
-var debug = process.env.NODE_ENV !== "production";
 var webpack = require("webpack");
 var path = require("path");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   context: path.join(__dirname),
-  devtool: debug ? "inline-sourcemap" : null,
   entry: "./src/js/root.js",
   module: {
     loaders: [
@@ -17,26 +16,33 @@ module.exports = {
           plugins: ["react-html-attrs"] //添加组件的插件配置
         }
       },
-      //下面是使用 ant-design 的配置文件
       { test: /\.css$/, loader: "style-loader!css-loader" },
-
       {
         test: /\.(png|jpg|jpeg)$/,
         loader: "url-loader?limit=8192",
         use: ["file-loader"]
-      },
-      { test: /\.tsx?$/, loader: "awesome-typescript-loader" }
+      }
     ]
   },
+  entry: {
+    app: path.resolve(__dirname, "./src/js/root.js")
+  },
   output: {
-    path: __dirname,
+    path: path.resolve(__dirname, "./dist"),
     filename: "./src/bundle.js"
   },
-  plugins: debug
-    ? []
-    : [
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false })
-      ],
+  plugins: [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+    new HtmlWebpackPlugin({
+      title: "resume-system-front",
+      filename: "app.html",
+      template: "./index.html" //Load a custom template
+    })
+  ],
+  externals: {
+    react: "React",
+    "react-dom": "ReactDOM"
+  }
 };
