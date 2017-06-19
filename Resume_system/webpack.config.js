@@ -8,6 +8,7 @@ module.exports = {
   entry: "./src/js/root.js",
   module: {
     loaders: [
+      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
       {
         test: /\.js?$/,
         exclude: /(node_modules)/,
@@ -17,15 +18,14 @@ module.exports = {
           plugins: ["react-html-attrs"] //添加组件的插件配置
         }
       },
-      //下面是使用 ant-design 的配置文件
+      //css module setting
       { test: /\.css$/, loader: "style-loader!css-loader" },
 
       {
         test: /\.(png|jpg|jpeg)$/,
         loader: "url-loader?limit=8192",
         use: ["file-loader"]
-      },
-      { test: /\.tsx?$/, loader: "awesome-typescript-loader" }
+      }
     ]
   },
   output: {
@@ -38,5 +38,5 @@ module.exports = {
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false })
-      ],
+      ]
 };

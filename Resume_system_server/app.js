@@ -1,3 +1,8 @@
+
+const static = require('koa-static');
+
+const path = require('path')
+
 const Koa = require("koa");
 
 const bodyParser = require("koa-bodyparser");
@@ -12,6 +17,7 @@ var cors = require("koa-cors");
 
 const app = new Koa();
 
+
 //允许跨域访问
 app.use(cors());
 
@@ -24,6 +30,7 @@ app.use(async (ctx, next) => {
 // static file support:
 let staticFiles = require("./static-files");
 app.use(staticFiles("/static/", __dirname + "/static"));
+
 
 // parse request body:
 app.use(bodyParser());

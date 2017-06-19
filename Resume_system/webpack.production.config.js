@@ -40,9 +40,5 @@ module.exports = {
       filename: "app.html",
       template: "./index.html" //Load a custom template
     })
-  ],
-  externals: {
-    react: "React",
-    "react-dom": "ReactDOM"
-  }
+  ]
 };

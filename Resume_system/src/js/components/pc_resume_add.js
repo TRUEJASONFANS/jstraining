@@ -52,7 +52,9 @@ class PCResumeAdd extends React.Component {
           "http://localhost:3000/api/addCandidate",
           myInit
         );
-        fetch(myRequest).then(response => {});
+        fetch(myRequest).then(response => {
+          
+        });
       }
     });
   };

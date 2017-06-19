@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 import PCResumeAdd from './components/pc_resume_add';
 import PCResumeEdit from './components/pc_resume_edit';
 import App from './components/App';
+require('../css/app.css'); 
 export default class Root extends React.Component {
 	render() {
 		return (
