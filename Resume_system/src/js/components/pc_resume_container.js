@@ -18,8 +18,8 @@ const columns = [{
     width: '20%',
 },
 {
-    title: 'Email',
-    dataIndex: 'email',
+    title: 'Degree',
+    dataIndex: 'degree',
     width: '20%',
 }, {
     title: 'Phone Number',

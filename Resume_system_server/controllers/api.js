@@ -31,7 +31,9 @@ module.exports = {
             fileType: 'pdf',
             path: serverFilePath
         })
-        ctx.body = result
+        ctx.body = result;
+        var c = candidates.createCandidate(ctx.body.formData.name,ctx.body.formData.degree,ctx.body.formData.phone);
+        console.log(c);
     },
 
     'POST /api/candidates': async (ctx, next) => {

@@ -1,15 +1,14 @@
-
 var id = 0;
 function nextId() {
     id++;
     return 'c' + id;
 }
 class Candidate {
-    constructor(name, email, phone) {
+    constructor(name, degree, phone) {
         this.id = nextId();
         this.name = name;
-        this.email = email;
-        this. phone = phone;
+        this.degree = degree;
+        this.phone = phone;
     }
 }
 module.exports = {
@@ -32,8 +31,8 @@ module.exports = {
         return null;
     },
 
-    createCandidate: (name, email, phone) => {
-        var c = new Candidates(name, email, phone);
+    createCandidate: (name, degree, phone) => {
+        var c = new Candidate(name, degree, phone);
         candidates.push(c);
         return c;
     },
@@ -56,7 +55,7 @@ module.exports = {
     }
 };
 var candidates = [
-    new Candidate('john', 'john smith@gmail.com', 6800053333),
-    new Candidate('sunny', 'sunday@gmail.com', 5887878877),
-    new Candidate('jack', 'jack@163.com', 875454578)
+    new Candidate('john', '本科', 6800053333),
+    new Candidate('sunny', '本科', 5887878877),
+    new Candidate('jack', '硕士', 875454578)
 ];
