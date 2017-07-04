@@ -1,6 +1,7 @@
 import React from "react";
 import PCHeader from "./pc_header";
 import PCFooter from "./pc_footer";
+import { withRouter } from 'react-router';
 import {
   Form,
   Input,
@@ -53,7 +54,8 @@ class PCResumeAdd extends React.Component {
           myInit
         );
         fetch(myRequest).then(response => {
-          
+          console.log(this.props.router);
+          this.props.router.push('/');
         });
       }
     });
@@ -206,4 +208,4 @@ class PCResumeAdd extends React.Component {
     );
   }
 }
-export default (PCResumeAdd = Form.create()(PCResumeAdd));
+export default withRouter(PCResumeAdd = Form.create()(PCResumeAdd));

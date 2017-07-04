@@ -8,8 +8,8 @@ const columns = [{
     render: name => `${name}`,
     width: '20%',
 }, {
-    title: 'Gender',
-    dataIndex: 'gender',
+    title: 'University',
+    dataIndex: 'university',
     filters: [
         { text: 'Male', value: 'male' },
         { text: 'Female', value: 'female' },
