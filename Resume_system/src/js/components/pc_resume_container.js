@@ -1,32 +1,30 @@
 import React from 'react';
-import { Table, Icon, Row, Col, BackTop } from 'antd';
+import { Table, Icon, Row, Col, BackTop, Popconfirm, message } from 'antd';
 import { Link } from 'react-router';
+import PCResumeDeleteLink from './pc_resume_delete_link';
 const columns = [{
-    title: 'Name',
+    title: '姓名',
     dataIndex: 'name',
     sorter: (a, b) => a.name.length - b.name.length,
     render: name => `${name}`,
     width: '20%',
 }, {
-    title: 'University',
+    title: '毕业学校',
     dataIndex: 'university',
-    filters: [
-        { text: 'Male', value: 'male' },
-        { text: 'Female', value: 'female' },
-    ],
-    onFilter: (value, record) => record.gender.indexOf(value) === 0,
     width: '20%',
 },
 {
-    title: 'Degree',
+    title: '学历',
     dataIndex: 'degree',
     width: '20%',
 }, {
-    title: 'Phone Number',
+    title: '电话号码',
     dataIndex: 'phone',
-}, { title: 'Action', key: 'operation', dataIndex: 'id', render: (id) => <Link to={`/viewResume/${id}`}> View</Link> }
+}, {
+    title: 'Action', key: 'operation', dataIndex: 'id', render: (id) => <span><Link to={`/viewResume/${id}`}> 查看</Link><span className="ant-divider" />
+        <PCResumeDeleteLink delId={`${id}`}/></span>
+}
 ];
-
 export default class PCResumeContainer extends React.Component {
     constructor() {
         super();

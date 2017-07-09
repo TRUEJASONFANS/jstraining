@@ -54,7 +54,6 @@ class PCResumeAdd extends React.Component {
           myInit
         );
         fetch(myRequest).then(response => {
-          console.log(this.props.router);
           this.props.router.push('/');
         });
       }

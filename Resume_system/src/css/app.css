@@ -68,3 +68,14 @@
 .editable-add-btn {
   margin-bottom: 8px;
 }
+
+.link-style-btn{
+  border: none;
+  background: none;
+  color: #108ee9;
+  text-decoration: underline;
+  cursor: pointer;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
