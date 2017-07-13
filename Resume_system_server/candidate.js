@@ -21,12 +21,26 @@ module.exports = {
         console.log(id);
         var i;
         for (i = 0; i < candidates.length; i++) {
-            console.log (`candidates[i].id is ${candidates[i].id}`);
+            console.log(`candidates[i].id is ${candidates[i].id}`);
             if (candidates[i].id === id) {
                 console.log("yes");
                 return candidates[i];
             } else {
                 console.log("no");
+            }
+        }
+        return null;
+    },
+
+    updateCandidate: (id, key, value) => {
+        console.log("key :" + key + " value:" + value);
+        for (i = 0; i < candidates.length; i++) {
+            if (candidates[i].id === id) {
+                console.log("yes");
+                if (candidates[i][key]) {
+                    candidates[i][key] = value;
+                }
+                return candidates[i];
             }
         }
         return null;
@@ -56,7 +70,7 @@ module.exports = {
     }
 };
 var candidates = [
-    new Candidate('john','五道口','本科', 6800053333),
-    new Candidate('sunny', '蓝翔','本科', 5887878877),
-    new Candidate('jack','新东方烹饪', '硕士', 875454578)
+    new Candidate('john', '五道口', '本科', 6800053333),
+    new Candidate('sunny', '蓝翔', '本科', 5887878877),
+    new Candidate('jack', '新东方烹饪', '硕士', 875454578)
 ];

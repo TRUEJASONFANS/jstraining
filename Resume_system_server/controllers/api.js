@@ -32,8 +32,19 @@ module.exports = {
             path: serverFilePath
         })
         ctx.body = result;
-        var c = candidates.createCandidate(ctx.body.formData.name,ctx.body.formData.degree,ctx.body.formData.phone);
+        var c = candidates.createCandidate(ctx.body.formData.name, ctx.body.formData.degree, ctx.body.formData.phone);
         console.log(c);
+    },
+
+    'POST /api/updateCandidate/:id/:key/:value': async (ctx, next) => {
+        console.log('update the candidate: ' + ctx.params.id + ctx.params.key + ctx.params.value);
+        var c = candidates.updateCandidate(ctx.params.id, ctx.params.key, ctx.params.value);
+        console.log(c);
+        if (c) {
+            ctx.rest(c);
+        } else {
+            throw new APIError('candidate:update fail', 'fail to update.');
+        }
     },
 
     'POST /api/candidates': async (ctx, next) => {

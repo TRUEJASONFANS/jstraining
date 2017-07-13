@@ -15,7 +15,11 @@
 
 .footer{
   text-align: center;
-  margin:auto;
+  position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: 9999;
 }
 
 .register{
@@ -28,6 +32,10 @@
 }
 .editable-cell {
   position: relative;
+  margin-top: 10px;
+}
+.editable-cell-text{
+  margin-right: 5px;
 }
 
 .editable-cell-input-wrapper,

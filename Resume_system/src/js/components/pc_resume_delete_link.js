@@ -30,7 +30,7 @@ class PCResumeDeleteLink extends React.Component {
     }
     render() {
         return <Popconfirm title="确定要删除这条简历吗？" onConfirm={this.confirm.bind(this)} onCancel={this.cancel.bind(this)} okText="Yes" cancelText="No">
-            <a href="/">Delete</a>
+            <a href="/">删除</a>
         </Popconfirm>
     }
 }

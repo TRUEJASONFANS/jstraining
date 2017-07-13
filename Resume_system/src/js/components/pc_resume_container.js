@@ -21,7 +21,7 @@ const columns = [{
     title: '电话号码',
     dataIndex: 'phone',
 }, {
-    title: 'Action', key: 'operation', dataIndex: 'id', render: (id) => <span><Link to={`/viewResume/${id}`}> 查看</Link><span className="ant-divider" />
+    title: 'Action', key: 'operation', dataIndex: 'id', render: (id) => <span><Link to={`/viewResume/${id}`}> 编辑</Link><span className="ant-divider" />
         <PCResumeDeleteLink delId={`${id}`}/></span>
 }
 ];
@@ -46,9 +46,6 @@ export default class PCResumeContainer extends React.Component {
         var myFetchOptions = {
             method: 'get'
         };
-        if (this.state.isLoaded) {
-            reuturn;
-        }
         fetch("http://localhost:3000/api/candidates", myFetchOptions)
             .then(response => response.json())
             .then(json => json.candidates).then(json => {
