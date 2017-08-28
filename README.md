@@ -1,2 +1,2 @@
 ## JSTrainning
-a samples project for learning javascript
+some sample projects for learning javascript
