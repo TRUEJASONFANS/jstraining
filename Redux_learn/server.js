@@ -1,7 +1,6 @@
 'use strict';
 var path = require('path');
 var express = require('express');
-var favicon = require('serve-favicon');
 var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
 

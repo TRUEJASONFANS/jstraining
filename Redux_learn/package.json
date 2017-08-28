@@ -5,30 +5,28 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon server.js --ignore components --ignore containers"
+    "start": "nodemon server.js --ignore components --ignore containers"
   },
   "author": "zhxie",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.2.1",
     "babel-loader": "^6.0.0",
-    "babelify": "^7.3.0",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
     "babel-preset-stage-0": "^6.24.1",
+    "babelify": "^7.3.0",
     "css-loader": "^0.23.0",
     "file-loader": "^0.8.5",
-    "node-sass": "^3.4.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^4.0.2",
-    "sass-loader": "^3.1.2",
-    "serve-favicon": "^2.3.0",
+    "redux": "^3.7.2",
+    "source-map-loader": "^0.2.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.2.0",
-    "webpack-hot-middleware": "^2.2.0",
-    "source-map-loader": "^0.2.1"
+    "webpack-hot-middleware": "^2.2.0"
   },
   "dependencies": {
     "express": "^4.13.3"

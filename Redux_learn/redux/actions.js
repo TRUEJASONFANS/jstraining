@@ -11,6 +11,7 @@ export const VisibilityFilters = {
 };
 
 export function addTodo(text) {
+  console.log('ACTIONS: ADD TODO INVOKE' + text);
   return {
     type: ADD_TODO,
     text
@@ -18,6 +19,7 @@ export function addTodo(text) {
 }
 
 export function completeTodo(index) {
+  console.log('COMPLETETODO INVOKE');
   return {
     type: COMPLETE_TODO,
     index

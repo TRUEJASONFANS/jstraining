@@ -10,22 +10,21 @@ export default class TodoItem extends React.Component {
         this.props.deleteTodo(this.props.todo.id);
     }
 
-    renderTextStyle() {
+    renderTextStyle(completed) {
         return {
-          color: this.props.todo.completed ? 'lightgrey' : 'black',
-          textDecoration: this.props.todo.completed ? 'line-through' : 'none'
+          color: completed ? 'lightgrey' : 'black',
+          textDecoration: completed ? 'line-through' : 'none'
         };
     }
 
     render() {
-        var textStyle = this.renderTextStyle();
+        const { onClick, completed, text } = this.props;
+        var textStyle = this.renderTextStyle(completed);
         return <ul>
-            <li>
+            <li onClick={onClick}>
                 <div style={textStyle}>
-                    {this.props.todo.text}
+                    {text}
                 </div>
-                <button onClick={this.handleCompleted}>toggle completed</button>
-                <button onClick={this.handleDelete}>delete</button>
             </li>
         </ul>
     }

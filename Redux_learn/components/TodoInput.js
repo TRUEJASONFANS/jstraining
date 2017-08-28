@@ -5,12 +5,10 @@ export default class TodoInput extends React.Component {
     state = {
         text: ''
     }
-    handleSubmit(e) {
+    handleClick(e) {
+        console.log('XXX onclick' + this.state.text);
         e.preventDefault();
-        this.props.addTodo(this.state.text);
-        this.setState({
-            text: ''
-        });
+        this.props.onAddClick(this.state.text);
     }
 
     handleChange(e) {
@@ -21,13 +19,14 @@ export default class TodoInput extends React.Component {
 
     render() {
         return <div>
-            <form >
+            <div >
                 <input type="text" placeholder="Add new todo" autoFocus="true" value={this.state.text} onChange={this.handleChange.bind(this)} />
-                <input
-                    type="submit"
-                    value="Add todo" />
-            </form>
-            <TextDisplay passedDownText={this.state.text} />
+                <button 
+                    onClick={ this.handleClick.bind(this) }
+                    value="Add todo" >
+                    Add
+                 </button>   
+            </div>
         </div>
     }
 }
