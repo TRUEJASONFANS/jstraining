@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
   addTodo,
@@ -10,6 +9,7 @@ import {
 import TodoInput from '../components/TodoInput';
 import TodoList from '../components/TodoList';
 import Footer from '../components/Footer';
+import UndoRedo from '../components/UndoRedo';
 
 class App extends React.Component {
   render() {
@@ -21,6 +21,7 @@ class App extends React.Component {
       <Footer filter={visibilityFilter} onFilterChange={
         nextFilter => dispatch(setVisibilityFilter(nextFilter))
       } />
+      <UndoRedo />
     </div>
   }
 }
@@ -37,7 +38,7 @@ App.PropTypes = {
   ]).isRequired
 };
 
-function selectTodos(todos, filter) {
+function selectTodos(todos, filter = VisibilityFilters.SHOW_ALL) {
   switch (filter) {
     case VisibilityFilters.SHOW_ALL:
       return todos;

@@ -2,6 +2,7 @@ import {
   ADD_TODO,
   COMPLETE_TODO
 } from '../actions';
+import undoable from 'redux-undo';
 
 function todos(state = [], action) {
   switch (action.type) {
@@ -27,4 +28,6 @@ function todos(state = [], action) {
   }
 }
 
-export default todos;
+const undoableTodos = undoable(todos)
+
+export default undoableTodos

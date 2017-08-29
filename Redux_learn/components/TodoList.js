@@ -2,14 +2,10 @@ import React from 'react';
 import TodoItem from './TodoItem';
 
 export default class TodoList extends React.Component {
-    constructor() {
-        super();
-    }
     render() {
         return <div>
             {
-                this.props.todos.map(function (todo, index) {
-                    console.log(todo);
+                this.props.todos.present.map(function (todo, index) {
                     return (
                         <TodoItem
                             {...todo}
