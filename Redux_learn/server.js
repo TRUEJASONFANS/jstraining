@@ -29,7 +29,7 @@ app.use('/static', express.static(__dirname + '/static'));
 })();
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, './client/index.html'));
+  res.sendFile(path.join(__dirname, './index.html'));
 });
 
 app.listen(port, 'localhost', function(error) {
