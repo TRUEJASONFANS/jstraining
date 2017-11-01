@@ -15,5 +15,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({// define what kind of acti
 
 const FilterLink = connect(
     mapStateToProps,
-    mapd
+    mapDispatchToProps
 )(Link)
+
+export default FilterLink

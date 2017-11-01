@@ -5,9 +5,9 @@ export const addTodo = (text) => ({
     text
 })
 
-export const setVisibilityFilter = (fitler) => ({
+export const setVisibilityFilter = (filter) => ({
     type: 'SET_VISIBILITY_FILTER',
-    fitler
+    filter
 })
 
 export const toggleTodo = (id) => ({
