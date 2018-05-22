@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>float 示例</title>
+    <style>
+         .box1 {
+            float:left; 
+            background-color: yellowgreen;
+            width:200px;
+            height:200px;
+         }
+         .box2 {
+            width:200px;
+            height:200px;
+            background-color: skyblue;
+         }
+         .box3 {
+             background-color: salmon;
+             width:200px;
+             height:200px;
+             float: left;
+         }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        使用float属性，脱离文档流
+    </div>
+    <div class="box2">
+        处于原本的文档流中,这里是box2，我与box1柔和在一起
+    </div>
+    <div class="box3">
+        使用float属性，脱离文档流,float流的第二个
+    </div>
+</body>
+</html>
