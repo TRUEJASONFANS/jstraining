@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Css重叠</title>
+    <style>
+        .box1 ul li {
+            color:blue;
+        }
+        .box1 ul li.style1{
+            color:red;
+        }
+        .box2 {
+            background-image:url('images/css_cascading.png');
+            height: 465px;
+            background-position: center top;
+            background-repeat:  no-repeat;
+            overflow: scroll;            
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <ul>
+            <li class="style1">文字</li>
+            <li>文字</li>
+            <li>文字</li>
+            <li>文字</li>
+            <li>文字</li>
+            <li>文字</li>
+            <li>文字</li>
+            <li>文字</li>
+            <li>文字</li>
+        </ul>
+    </div>
+    <div class="box2"></div>
+</body>
+</html>
