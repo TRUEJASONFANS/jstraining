@@ -32,6 +32,13 @@
             position: relative;
             left: 20px
         }
+        div.absolute {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            bottom: 200px;
+            left: 200px;
+        }
     </style>
 </head>
 
@@ -50,6 +57,8 @@
     <div class="box4">
             static	默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。
     </div>
+
+    <div class="absolute">我在哪,绝对定位的盒子脱离了标准文档流</div>
 </body>
 
 </html>
