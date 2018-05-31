@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>How to center</title>
+    <style>
+        .box1 {
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            text-align: center; /*在盒子中居中*/
+        }
+        .box2 {
+            width: 600px;
+            height: 400px;
+            position: absolute;
+            left: 50%;
+            margin-left: -300px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"><span class="span1">我在标准文档中居中</span></div>
+    <div class="box2">我在绝对定位中，脱离文档流</div>
+</body>
+</html>
