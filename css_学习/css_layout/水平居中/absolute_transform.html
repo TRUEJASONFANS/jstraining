@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>absolute_transform</title>
+</head>
+<style>
+  .parent {
+    position: relative;
+  }
+  .child1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+</style>
+<body>
+  <div class="parent">
+    <div class="child1">
+        缺点：兼容性问题；(relative + relative) => 父元素设置 relative 向右平移 50%， 子元素设置 relative 向左平移 -50%，relative 均是相对于自身宽度进行移动；
+    </div>
+  </div>
+</body>
+
+</html>

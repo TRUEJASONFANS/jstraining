@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>inline-block + text-align</title>
+</head>
+<style>
+  .child1 {
+    display: inline-block;
+  }
+  div.parent {
+    text-align: center;
+    background-color: blueviolet;
+  }
+</style>
+<body>
+  <div class="parent">
+    <div class="child1">
+      优点：兼容性好；缺点：子容器的内容居中需要额外的 text-align 属性；
+    </div>
+  </div>
+</body>
+
+</html>
