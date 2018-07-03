@@ -1,0 +1,16 @@
+{
+  "name": "ssr_demo",
+  "version": "1.0.0",
+  "description": "a demo for ssr",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "zhxie",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "vue": "^2.5.16",
+    "vue-server-renderer": "^2.5.16"
+  }
+}
