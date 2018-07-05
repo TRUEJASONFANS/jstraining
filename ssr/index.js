@@ -7,7 +7,7 @@ server.get("*", (req, res) => {
     data: {
       url: req.url
     },
-    template: `<div>2222</div>`
+    template: `<div>{{url}}</div>`
   });
 
   renderer.renderToString(app, (err, html) => {
@@ -18,7 +18,10 @@ server.get("*", (req, res) => {
     res.end(`
     <!DOCTYPE html>
     <html lang="en">
-      <head><title>Hello</title></head>
+      <head>
+        <meta chartset="UTF-8"/>
+        <title>Hello</title>
+      </head>
       <body>${html} 123 </body>
     </html>
   `);
