@@ -17,7 +17,7 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    incrementAsync ({ commit }) {
+    incrementAsync ({ commit }) {//可以是异步函数
       setTimeout(() => {
         commit('increment')
       }, 1000)
