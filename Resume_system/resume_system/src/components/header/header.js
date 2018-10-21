@@ -1,23 +1,9 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import {
-	Menu,
-	Icon,
-	Tabs,
-	message,
-	Form,
-	Input,
-	Button,
-	CheckBox,
-	Modal
-} from 'antd';
-const FormItem = Form.Item;
-const SubMenu = Menu.SubMenu;
-const TabPane = Tabs.TabPane;
-const MenuItemGroup = Menu.ItemGroup;
-import { Router, Route, Link, browserHistory } from 'react-router';
-import Uploader from './uploader';
+import {Menu, Icon, Tabs, message, Form, Button} from 'antd';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Logo  from '../../images/logo.png';
+
 class PCHeader extends React.Component {
 	constructor() {
 		super();
@@ -42,13 +28,11 @@ class PCHeader extends React.Component {
 		this.setState({ modalVisible: value });
 	};
 	handleClick(e) {
-		if (e.key == "register") {
+		if (e.key === "register") {
 			this.setState({ current: 'register' });
 			this.setModalVisible(true);
-		}else {
-			{
-				this.setState({ current: e.key });
-			}
+		} else {
+			this.setState({ current: e.key });
 		}
 	};
 	handleSubmit(e) {
@@ -77,9 +61,9 @@ class PCHeader extends React.Component {
 		this.setModalVisible(false);
 	};
 	callback(key) {
-		if (key == 1) {
+		if (key ===1) {
 			this.setState({ action: 'login' });
-		} else if (key == 2) {
+		} else if (key === 2) {
 			this.setState({ action: 'register' });
 		}
 	};
@@ -104,7 +88,6 @@ class PCHeader extends React.Component {
 				<Icon type="appstore" />注册/登录
 			</Menu.Item>;
 		return (
-			<header>
 				<Row>
 					<Col span={2}></Col>
 					<Col span={4}>
@@ -117,52 +100,24 @@ class PCHeader extends React.Component {
 						<Menu mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
 							<Menu.Item key="index">
 								<Link to={`/`}>
-								<Icon type="appstore" />首页
+								<Icon type="home" />首页
 								</Link>
 							</Menu.Item>
 							<Menu.Item key="add_resume">
 								<Link to={`/addResume`}>
-									<Icon type="appstore" />添加简历
+									<Icon type="book" />添加简历
 								</Link>
 							</Menu.Item>
 							<Menu.Item key="statistic">
-								<Icon type="appstore" />统计
+							<Link to={`/stat`}>
+								<Icon type="database" />统计
+								</Link>
 							</Menu.Item>
-							{userShow}
+							{/* {userShow} */}
 						</Menu>					
-						<Modal title="用户中心" wrapClassName="vertical-center-modal" visible={this.state.modalVisible} onCancel={() => this.setModalVisible(false)} onOk={() => this.setModalVisible(false)} okText="关闭">
-							<Tabs type="card" onChange={this.callback.bind(this)}>
-								<TabPane tab="登录" key="1">
-									<Form horizontal onSubmit={this.handleSubmit.bind(this)}>
-										<FormItem label="账户">
-											<Input placeholder="请输入您的账号" {...getFieldProps('userName') } />
-										</FormItem>
-										<FormItem label="密码">
-											<Input type="password" placeholder="请输入您的密码" {...getFieldProps('password') } />
-										</FormItem>
-										<Button type="primary" htmlType="submit">登录</Button>
-									</Form>
-								</TabPane>
-								<TabPane tab="注册" key="2">
-									<Form horizontal onSubmit={this.handleSubmit.bind(this)}>
-										<FormItem label="账户">
-											<Input placeholder="请输入您的账号" {...getFieldProps('r_userName') } />
-										</FormItem>
-										<FormItem label="密码">
-											<Input type="password" placeholder="请输入您的密码" {...getFieldProps('r_password') } />
-										</FormItem>
-										<FormItem label="确认密码">
-											<Input type="password" placeholder="请再次输入您的密码" {...getFieldProps('r_confirmPassword') } />
-										</FormItem>
-										<Button type="primary" htmlType="submit">注册</Button>
-									</Form>
-								</TabPane>
-							</Tabs>
-						</Modal>
 					</Col>
 					<Col span={2}></Col>
 				</Row>
-			</header>
 		);
 	};
 }
