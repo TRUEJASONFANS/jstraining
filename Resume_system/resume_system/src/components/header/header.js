@@ -1,9 +1,9 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import {Menu, Icon, Tabs, message, Form, Button} from 'antd';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Logo  from '../../images/logo.png';
-
+import { Menu, Icon, message, Form, Button} from 'antd';
+import { Link } from "react-router-dom";
+import Logo from '../../images/logo.png';
+import LoginModel from './login_model';
 class PCHeader extends React.Component {
 	constructor() {
 		super();
@@ -78,47 +78,49 @@ class PCHeader extends React.Component {
 			? <Menu.Item key="logout" class="register">
 				<Button type="primary" htmlType="button">{this.state.userNickName}</Button>
 				&nbsp;&nbsp;
-					<Link target="_blank">
+					<Link to={`personal`}>
 					<Button type="dashed" htmlType="button">个人中心</Button>
 				</Link>
 				&nbsp;&nbsp;
 					<Button type="ghost" htmlType="button" onClick={this.logout.bind(this)}>退出</Button>
 			</Menu.Item>
 			: <Menu.Item key="register" class="register">
-				<Icon type="appstore" />注册/登录
+				<Icon type="login" />注册/登录
 			</Menu.Item>;
-		return (
-				<Row>
-					<Col span={2}></Col>
-					<Col span={4}>
-						<a href="/" class="logo">
-							<img src={Logo} alt="logo" />
-							<span>Resume System</span>
-						</a>
-					</Col>
-					<Col span={16}>
-						<Menu mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
-							<Menu.Item key="index">
-								<Link to={`/`}>
-								<Icon type="home" />首页
-								</Link>
-							</Menu.Item>
-							<Menu.Item key="add_resume">
-								<Link to={`/addResume`}>
-									<Icon type="book" />添加简历
-								</Link>
-							</Menu.Item>
-							<Menu.Item key="statistic">
-							<Link to={`/stat`}>
-								<Icon type="database" />统计
-								</Link>
-							</Menu.Item>
-							{/* {userShow} */}
-						</Menu>					
-					</Col>
-					<Col span={2}></Col>
-				</Row>
-		);
+		return <Row>
+        <Col span={2} />
+        <Col span={4}>
+          <a href="/" class="logo">
+            <img src={Logo} alt="logo" />
+            <span>Resume System</span>
+          </a>
+        </Col>
+        <Col span={16}>
+          <Menu mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
+            <Menu.Item key="index">
+              <Link to={`/`}>
+                <Icon type="home" />
+                首页
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="add_resume">
+              <Link to={`/addResume`}>
+                <Icon type="book" />
+                添加简历
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="statistic">
+              <Link to={`/stat`}>
+                <Icon type="database" />
+                统计
+              </Link>
+            </Menu.Item>
+            {userShow}
+          </Menu>
+          <LoginModel callback={this.callback} handleSubmit={this.handleSubmit} />
+        </Col>
+        <Col span={2} />
+      </Row>;
 	};
 }
 export default PCHeader = Form.create({})(PCHeader);
