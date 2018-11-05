@@ -12,7 +12,7 @@ function Header({ location }) {
         <Link to="/"><Icon type="home" />首页</Link>
       </Menu.Item>
       <Menu.Item key="/addResumer">
-        <Link to="/addResumer"><Icon type="user" />添加简历</Link>
+        <Link to="/addResume"><Icon type="user" />添加简历</Link>
       </Menu.Item>
 			<Menu.Item key="/statistic">
         <Link to="/statistic"><Icon type="user" />添加简历</Link>
