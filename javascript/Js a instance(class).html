@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- JavaScript不区分类和实例的概念 -->
+    <script type="text/javascript">
+    function Fish() {
+        console.log('I am a Fish');
+    }
+    function Bird(){
+         console.log('I am a Bird');
+    }
+    var fish1 = new Fish();
+    var bird = new Bird();
+    if (fish1 instanceof  Fish) {
+        window.alert("I am fish");
+    }
+    </script>
+</body>
+</html>
