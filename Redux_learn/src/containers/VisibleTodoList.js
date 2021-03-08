@@ -15,10 +15,14 @@ const getVisibleTodos = (todos, filter) => {
   }
 }
 
+
+//怎么从store拿到状态
 const mapStateToProps = (state) => ({
   todos: getVisibleTodos(state.todos.present, state.visibilityFilter)
 })
 
+
+//组件的state怎么影响store
 const mapDispatchToProps = ({
   onTodoClick: toggleTodo
 })
